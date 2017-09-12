@@ -37,7 +37,9 @@ export default {
         ((prevHash << 5) - prevHash) + currVal.charCodeAt(0), 0)
     },
     emitData () {
-      bus.$emit('triggerModal', this.rep)
+      bus.$emit('triggerModal', {
+        fullName: this.rep.full_name
+      })
     }
   },
   computed: {

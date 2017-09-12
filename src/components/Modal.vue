@@ -51,11 +51,26 @@ export default {
   font-family Helvetica, Arial, sans-serif
 
 .modal-header a
+  text-decoration none
   margin-top 0
   color #42b983
 
 .modal-body
   margin 20px 0
+
+  .table
+    display flex
+    justify-content space-around
+    margin 10px
+
+    .info
+      list-style none
+      .key
+        color grey
+        font-size 16px
+      .value
+        margin-left 8px
+        color grey
 
 .modal-default-button
   float right

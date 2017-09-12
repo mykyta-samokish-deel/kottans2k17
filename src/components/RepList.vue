@@ -100,7 +100,6 @@ export default {
 
             cache.add(owner)
             this.data = this.data.concat(data)
-            console.log(data)
             this.page += 1
           })
           .catch(console.error)
