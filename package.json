@@ -1,7 +1,8 @@
 {
-  "name": "kottans",
+  "name": "kottans2k17",
   "version": "1.0.0",
   "description": "mini GitHub API client",
+  "homepage": "https://mykytasamokish.github.io/kottans2k17",
   "author": "Mykyta Samokish <mykyta.samokish@gmail.com>",
   "private": true,
   "scripts": {
