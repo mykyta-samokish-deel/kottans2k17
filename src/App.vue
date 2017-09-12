@@ -1,20 +1,39 @@
 <template lang='pug'>
   #app
-    header: span Vue.js PWA
-    main
-      img(src="./assets/logo.png" alt="Vue.js PWA")
-      router-view
+    header: router-link(to='/') Home
+    modal(v-if='showModal' @close='showModal = false')
+      a(slot='header') {{ modalData.name }}
+    transition(name='fade'): router-view
 </template>
 
 <script>
+import bus from './bus'
+
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      showModal: false,
+      modalData: null
+    }
+  },
+  components: {
+    Modal: () => import('@/components/Modal')
+  },
+  mounted () {
+    bus.$on('triggerModal', rep => {
+      this.showModal = true
+      this.modalData = rep
+    })
+  }
 }
 </script>
 
 <style lang='stylus'>
-body
+*
+  box-sizing border-box
   margin 0
+  padding 0
 
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
@@ -24,23 +43,28 @@ body
 
 main
   text-align center
-  margin-top 40px
+  width 100%
 
 header
   margin 0
-  height 56px
-  padding 0 16px 0 24px
-  background-color #35495E
+  padding 16px 0
+  background-color #3F51B5
   color #ffffff
+  text-align left
 
-  span
+  a
+    text-decoration none
     display block
+    color white
     position relative
     font-size 20px
-    line-height 1
+    padding-left 16px
     letter-spacing .02em
     font-weight 400
-    box-sizing border-box
-    padding-top 16px
 
+.fade-enter-active, .fade-leave-active
+  transition opacity 500ms
+
+.fade-enter, .fade-leave-to
+  opacity 0
 </style>
